@@ -19,3 +19,10 @@ down:
 
 env:
 	docker exec srcs-nginx-1 env
+
+rmv:
+	docker volume rm srcs_mariadb srcs_wordpress
+
+log:
+	cd srcs && docker-compose logs
+
