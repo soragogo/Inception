@@ -1,9 +1,5 @@
 version: '3'
 
-volumes:
-  wordpress:
-  mariadb:
-
 
 services:
   nginx:
@@ -49,3 +45,8 @@ services:
 
 networks:
   inception:
+
+volumes:
+  wordpress:
+  mariadb:
+

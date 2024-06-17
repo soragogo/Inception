@@ -5,7 +5,8 @@ debian:
 	docker run -it --rm --name my_debian --network inception debian bash
 
 up:
-	cd srcs && sudo docker-compose up --build -d
+	cd srcs && sudo docker-compose build
+	cd srcs && sudo docker-compose up -d
 
 en:
 	docker exec -it srcs-nginx-1 bin/bash
