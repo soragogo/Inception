@@ -4,8 +4,12 @@
 debian:
 	docker run -it --rm --name my_debian --network inception debian bash
 
-up:
+build:
 	cd srcs && sudo docker-compose build
+
+
+up:
+	cd srcs && sudo docker-compose build --no-cache
 	cd srcs && sudo docker-compose up -d
 
 en:
