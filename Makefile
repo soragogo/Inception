@@ -1,3 +1,5 @@
+debian:
+	docker run -it --rm --name my_debian  debian bash
 down:
 	sudo docker container stop nginx mariadb wordpress
 	sudo docker container rm nginx mariadb wordpress

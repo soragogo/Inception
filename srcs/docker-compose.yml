@@ -1,21 +1,33 @@
 services:
   nginx:
+    depends_on:
+      - wordpress
     build: requirements/nginx/.
     container_name: nginx
     ports:
       - "80:80"
     volumes:
       - ./web:/var/www/html
+    networks:
+      - inception
 
   wordpress:
+    depends_on:
+      - mariadb
     build: requirements/wordpress/.
     container_name: wordpress
     volumes:
       - ./web:/var/www/html
+    networks:
+      - inception
 
   mariadb:
     build: requirements/mariadb/.
     container_name: mariadb
+    networks:
+      - inception
 
 
-
+networks:
+  inception:
+    driver: bridge
