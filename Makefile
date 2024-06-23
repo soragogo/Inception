@@ -4,3 +4,20 @@ down:
 
 up:
 	cd srcs && sudo docker compose up --build
+
+en:
+	docker exec -it nginx bin/bash
+ew:
+	docker exec -it wordpress bin/bash
+em:
+	docker exec -it mariadb bin/bash
+
+
+env:
+	docker exec nginx env
+
+rmv:
+	docker volume rm srcs_mariadb srcs_wordpress
+
+log:
+	cd srcs && docker-compose logs
