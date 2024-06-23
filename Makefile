@@ -1,6 +1,6 @@
 down:
-	sudo docker container stop srcs-nginx-1 srcs-mariadb-1 srcs-wordpress-1
-	sudo docker container rm srcs-nginx-1 srcs-mariadb-1 srcs-wordpress-1
+	sudo docker container stop nginx mariadb wordpress
+	sudo docker container rm nginx mariadb wordpress
 
 up:
 	cd srcs && sudo docker compose up --build
@@ -17,7 +17,7 @@ env:
 	docker exec nginx env
 
 rmv:
-	docker volume rm srcs_mariadb srcs_wordpress
+	docker volume rm mariadb wordpress
 
 log:
 	cd srcs && docker-compose logs
