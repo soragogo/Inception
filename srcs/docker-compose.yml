@@ -10,6 +10,8 @@ services:
       - ./web:/var/www/html
     networks:
       - inception
+    env_file:
+      - .env
 
   wordpress:
     depends_on:
@@ -20,12 +22,16 @@ services:
       - ./web:/var/www/html
     networks:
       - inception
+    env_file:
+      - .env
 
   mariadb:
     build: requirements/mariadb/.
     container_name: mariadb
     networks:
       - inception
+    env_file:
+      - .env
 
 
 networks:
