@@ -19,7 +19,7 @@ services:
     build: requirements/wordpress/.
     container_name: wordpress
     volumes:
-      - ./web:/var/www/html
+      - wordpress:/var/www/html
     networks:
       - inception
     env_file:
@@ -37,3 +37,12 @@ services:
 networks:
   inception:
     driver: bridge
+
+volumes:
+  mariadb:
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./web
+      o: bind
