@@ -1,9 +1,11 @@
 FROM debian:bookworm
 
 RUN apt update && apt upgrade && apt install -y \
-    nginx vim curl openssl
+    nginx openssl
 
-# nginx SSL
+# レビュー前に削除する
+RUN apt install -y vim curl
+
 RUN mkdir /etc/nginx/ssl
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
         -out /etc/nginx/ssl/ekamada.pem \
