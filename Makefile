@@ -18,8 +18,8 @@ em:
 env:
 	docker exec nginx env
 
-rmv:
-	docker volume rm mariadb wordpress
+rm:
+	cd srcs && docker compose  down -v --rmi 'all'
 
 log:
 	cd srcs && docker-compose logs
