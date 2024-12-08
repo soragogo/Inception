@@ -9,7 +9,4 @@ echo "CREATE USER '$DB_USER'@'%' IDENTIFIED BY '$DB_PASSWORD';" >> /etc/mysql/in
 echo "GRANT ALL PRIVILEGES ON *.* TO '$DB_USER'@'%' WITH GRANT OPTION;" >> /etc/mysql/init.sql
 echo "FLUSH PRIVILEGES;" >> /etc/mysql/init.sql
 
-echo "CREATE USER '$WP_ADMIN_USER'@'%' IDENTIFIED BY '$WP_ADMIN_PASSWORD';" >> /etc/mysql/init.sql
-echo "GRANT ALL ON $DB_NAME.wordpress TO '$WP_ADMIN_USER'@'%' WITH GRANT OPTION;" >> /etc/mysql/init.sql
-echo "FLUSH PRIVILEGES;" >> /etc/mysql/init.sql
 mysqld_safe
