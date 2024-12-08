@@ -10,8 +10,7 @@ RUN mkdir /etc/nginx/ssl
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
         -out /etc/nginx/ssl/ekamada.pem \
         -keyout /etc/nginx/ssl/ekamada.key \
-        -subj "/C=JP/ST=Tokyo/L=Tokyo/O=42 School/OU=ekamada/CN=ekamada/" \
-        -addext  "subjectAltName = DNS:localhost, IP:127.0.0.1"
+        -subj "/C=JP/ST=Tokyo/L=Tokyo/O=42 School/OU=ekamada/CN=ekamada/" 
 
 COPY ./conf/default /etc/nginx/sites-available/.
 
