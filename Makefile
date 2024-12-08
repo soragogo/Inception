@@ -5,7 +5,7 @@ down:
 	sudo docker container rm nginx mariadb wordpress
 
 up:
-	cd srcs && sudo docker compose up --build
+	cd srcs && sudo docker compose up -d --build
 
 en:
 	docker exec -it nginx bin/bash
