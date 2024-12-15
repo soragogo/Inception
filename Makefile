@@ -1,11 +1,10 @@
-debian:
-	docker run -it --rm --name my_debian  debian bash
+up:
+	cd srcs && sudo docker compose up -d --build
+
 down:
 	sudo docker container stop nginx mariadb wordpress
 	sudo docker container rm nginx mariadb wordpress
 
-up:
-	cd srcs && sudo docker compose up -d --build
 
 en:
 	docker exec -it nginx bin/bash
