@@ -19,7 +19,9 @@ if [ ! $(wp core is-installed --allow-root)]; then
     wp core install --url=ekamada.42.fr --title=inception --admin_user=$WP_ADMIN_USER --admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_EMAIL --allow-root
 fi
 
-wp user create $WP_AUTHOR_USER $WP_AUTHOR_EMAIL --role=author --user_pass=$WP_AUTHOR_PASSWORD --allow-root
+if ! wp user get $WP_AUTHOR_USER > /dev/null 2>&1; then
+    wp user create $WP_AUTHOR_USER $WP_AUTHOR_EMAIL --role=author --user_pass=$WP_AUTHOR_PASSWORD --allow-root
+fi
 
 
 php-fpm8.2 -F
