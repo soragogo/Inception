@@ -25,6 +25,16 @@ services:
       - inception
     env_file:
       - .env
+    secrets:
+      - db_host
+      - db_name
+      - db_password
+      - db_prefix
+      - db_user
+      - wp_admin_email
+      - wp_admin_password
+      - wp_author_email
+      - wp_author_password
     restart: unless-stopped
 
   mariadb:
@@ -34,9 +44,35 @@ services:
       - inception
     env_file:
       - .env
+    secrets:
+      - db_host
+      - db_name
+      - db_password
+      - db_prefix
+      - db_user
     restart: unless-stopped
+
 
 
 networks:
   inception:
 
+secrets:
+  db_host:
+    file: ../secrets/db_host.txt
+  db_name:
+    file: ../secrets/db_name.txt
+  db_password:
+    file: ../secrets/db_password.txt
+  db_prefix:
+    file: ../secrets/db_prefix.txt
+  db_user:
+    file: ../secrets/db_user.txt
+  wp_admin_email:
+    file: ../secrets/wp_admin_email.txt
+  wp_admin_password:
+    file: ../secrets/wp_admin_password.txt
+  wp_author_email:
+    file: ../secrets/wp_author_email.txt
+  wp_author_password:
+    file: ../secrets/wp_author_password.txt
