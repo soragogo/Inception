@@ -13,6 +13,7 @@ fi
 
 if [ ! -f wp-config.php ]; then
     wp config create --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASSWORD --dbhost=$DB_HOST --dbprefix=$DB_PREFIX --allow-root
+    echo -e "<?php\nif (!isset(\$_SERVER['HTTP_HOST'])) {\n    \$_SERVER['HTTP_HOST'] = $DOMAIN_NAME;\n}\n?>" >> wp-config.php
 fi
 
 if [ ! $(wp core is-installed --allow-root)]; then
