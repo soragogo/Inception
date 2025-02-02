@@ -43,7 +43,7 @@ server {
 	# Add index.php to the list if you are using PHP
 	index index.php index.html index.htm index.nginx-debian.html;
 
-	server_name inception;
+	server_name www.ekamada.42.fr ekamada.42.fr;
 
 	ssl_certificate /etc/nginx/ssl/ekamada.pem;
 	ssl_certificate_key /etc/nginx/ssl/ekamada.key;
