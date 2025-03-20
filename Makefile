@@ -15,7 +15,6 @@ ew:
 em:
 	docker exec -it mariadb bin/bash
 
-
 env:
 	docker exec nginx env
 
