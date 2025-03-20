@@ -5,9 +5,6 @@ down:
 	sudo docker container stop nginx mariadb wordpress
 	sudo docker container rm nginx mariadb wordpress
 
-up:
-	cd srcs && docker compose up --build
-
 en:
 	docker exec -it nginx bin/bash
 ew:

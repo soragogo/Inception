@@ -1,4 +1,11 @@
 #!/bin/bash
+
+until mysql -h"$(cat $DB_HOST_FILE)" -u"$(cat $DB_USER_FILE)" -p"$(cat $DB_PASSWORD_FILE)" -e "SELECT 1;" &> /dev/null
+do
+  echo "MariaDB is unavailable - sleeping"
+  sleep 3
+done
+
 cd /var/www/html
 
 if [ ! -f /usr/local/bin/wp ]; then
