@@ -1,5 +1,6 @@
 services:
   nginx:
+    image: nginx
     depends_on:
       - wordpress
     build: requirements/nginx/.
@@ -7,20 +8,21 @@ services:
     ports:
       - "443:443"
     volumes:
-      - /home/ekamada/data:/var/www/html
+      - wordpress:/var/www/html
     networks:
       - inception
     env_file:
       - .env
-    restart: unless-stopped
+    restart: on-failure
 
   wordpress:
+    image: wordpress
     depends_on:
       - mariadb
     build: requirements/wordpress/.
     container_name: wordpress
     volumes:
-      - /home/ekamada/data:/var/www/html
+      - wordpress:/var/www/html
     networks:
       - inception
     env_file:
@@ -35,11 +37,14 @@ services:
       - wp_admin_password
       - wp_author_email
       - wp_author_password
-    restart: unless-stopped
+    restart: on-failure
 
   mariadb:
+    image: mariadb
     build: requirements/mariadb/.
     container_name: mariadb
+    volumes:
+      - db:/var/lib/mysql
     networks:
       - inception
     env_file:
@@ -50,7 +55,7 @@ services:
       - db_password
       - db_prefix
       - db_user
-    restart: unless-stopped
+    restart: on-failure
 
 
 
@@ -76,3 +81,17 @@ secrets:
     file: ../secrets/wp_author_email.txt
   wp_author_password:
     file: ../secrets/wp_author_password.txt
+
+volumes:
+  wordpress:
+    driver: local
+    driver-opts:
+      type: none
+      device: /home/ekamada/data/wordpress
+      o: bind
+  db:
+    driver: local
+    driver-opts:
+      type: none
+      device: /home/ekamada/data/db
+      o: bind
