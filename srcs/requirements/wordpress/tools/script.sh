@@ -16,7 +16,7 @@ if [ ! -f wp-config.php ]; then
 fi
 
 if [ ! $(wp core is-installed --allow-root) ]; then
-    wp core install --url=$DOMAIN_NAME --title=inception --admin_user=$WP_ADMIN_USER --admin_password=$(cat $WP_ADMIN_PASSWORD_FILE) --admin_email=$(cat $WP_ADMIN_EMAIL_FILE) --allow-root
+    wp core install --url=$DOMAIN_NAME --title=inception --admin_user=$WP_ADMIN_USER --admin_password=$(cat $WP_ADMIN_PASSWORD_FILE) --admin_email=$(cat $WP_ADMIN_EMAIL_FILE) --allow-root --skip-email
 fi
 
 if ! wp user get $WP_AUTHOR_USER --allow-root > /dev/null 2>&1; then
