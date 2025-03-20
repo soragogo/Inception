@@ -20,7 +20,7 @@ if [ ! $(wp core is-installed --allow-root) ]; then
 fi
 
 if ! wp user get $WP_AUTHOR_USER --allow-root > /dev/null 2>&1; then
-    wp user create $WP_AUTHOR_USER $(cat $WP_AUTHOR_EMAIL_FILE) --role=author --user_pass=$(cat $WP_AUTHOR_PASSWORD_FILE) --allow-root
+    wp user create $WP_AUTHOR_USER $(cat $WP_AUTHOR_EMAIL_FILE) --role=author --user_pass=$(cat $WP_AUTHOR_PASSWORD_FILE) --allow-root --porcelain
 fi
 
 
