@@ -1,12 +1,9 @@
-# Use sudo if USE_SUDO is set to 1
-SUDO=$(if $(USE_SUDO),sudo)
-
 up:
-	cd srcs && $(SUDO) docker compose up -d --build
+	cd srcs && sudo docker compose up -d --build
 
 down:
-	$(SUDO) docker container stop nginx mariadb wordpress
-	$(SUDO) docker container rm nginx mariadb wordpress
+	sudo docker container stop nginx mariadb wordpress
+	sudo docker container rm nginx mariadb wordpress
 
 en:
 	docker exec -it nginx bin/bash
