@@ -84,12 +84,14 @@ secrets:
 
 volumes:
   wordpress:
+    name: wordpress
     driver: local
     driver_opts:
       type: none
       device: /home/ekamada/data/wordpress
       o: bind
   db:
+    name: db
     driver: local
     driver_opts:
       type: none
